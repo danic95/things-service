@@ -3,19 +3,23 @@ package sqlite
 import (
 	"context"
 	_ "embed"
+
+	"github.com/danic95/things-service/internal/things/repository/cache"
 	"github.com/jmoiron/sqlx"
 )
 
 type Sqlite struct {
-	db *sqlx.DB
+	cache *cache.Cache
+	db    *sqlx.DB
 }
 
 //go:embed schema.sql
 var createSchemaStmt string
 
-func New(db *sqlx.DB) *Sqlite {
+func New(db *sqlx.DB, cach *cache.Cache) *Sqlite {
 	return &Sqlite{
-		db: db,
+		cache: cach,
+		db:    db,
 	}
 }
 

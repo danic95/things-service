@@ -1,107 +1,75 @@
 basePath: /v1
 consumes:
 - application/json
-definitions:
-  Thing:
-    description: Thing is db record of thing
-    properties:
-      category_id:
-        format: uint64
-        type: integer
-        x-go-name: CategoryID
-      id:
-        format: uint64
-        type: integer
-        x-go-name: ID
-      image:
-        type: string
-        x-go-name: Image
-    type: object
-    x-go-package: github.com/danic95/things-service/internal/things/entity
-  badRequestRS:
-    description: Bad request
-    properties:
-      error:
-        description: |-
-          Error message
-          in: body
-        type: string
-        x-go-name: Body
-    type: object
-    x-go-name: badRequestResp
-    x-go-package: github.com/danic95/things-service/internal/api/v1/dto
-  genericErrorRS:
-    description: Generic error
-    properties:
-      error:
-        description: |-
-          Error message
-          in: body
-        type: string
-        x-go-name: Body
-    type: object
-    x-go-name: genericErrorResp
-    x-go-package: github.com/danic95/things-service/internal/api/v1/dto
-  genericSuccessRS:
-    description: Generic success
-    properties:
-      Data:
-        description: 'in: body'
-        type: object
-    type: object
-    x-go-name: genericSuccessResp
-    x-go-package: github.com/danic95/things-service/internal/api/v1/dto
-  getThingRS:
-    properties:
-      thing:
-        $ref: '#/definitions/Thing'
-    type: object
-    x-go-package: github.com/danic95/things-service/internal/api/v1/dto
-  serverErrorRS:
-    description: Internal server error
-    properties:
-      body:
-        description: |-
-          Error message
-          in: body
-        type: string
-        x-go-name: Body
-    type: object
-    x-go-name: serverErrorResp
-    x-go-package: github.com/danic95/things-service/internal/api/v1/dto
 host: localhost:8080
 info:
   description: things-service service
-  title: things-service service
   version: "1.0"
 paths:
-  /thing:
+  /things:
     get:
       description: Retrieves a thing
       operationId: getThingRQ
       parameters:
-      - in: query
+      - in: path
         name: id
+        required: true
         type: string
         x-go-name: ID
       responses:
         "200":
-          description: getThingRS
-          schema:
-            $ref: '#/definitions/getThingRS'
+          $ref: '#/responses/getThingRS'
         "400":
-          description: badRequestRS
-          schema:
-            $ref: '#/definitions/badRequestRS'
+          $ref: '#/responses/badRequestRS'
         "500":
-          description: serverErrorRS
-          schema:
-            $ref: '#/definitions/serverErrorRS'
+          $ref: '#/responses/serverErrorRS'
       summary: Retrieves a thing
+      tags:
+      - things
+    post:
+      description: Creates a thing
+      operationId: createThing
+      parameters:
+      - in: body
+        name: Body
+        schema:
+          properties:
+            id:
+              format: uint64
+              type: integer
+              x-go-name: ID
+            name:
+              type: string
+              x-go-name: Name
+          type: object
+      responses:
+        "200":
+          $ref: '#/responses/CreateThingRS'
+        "400":
+          $ref: '#/responses/badRequestRS'
+        "500":
+          $ref: '#/responses/serverErrorRS'
+      summary: Creates a thing
       tags:
       - things
 produces:
 - application/json
+responses:
+  CreateThingRS:
+    description: CreateThingRS represents the response for Swagger documentation
+    schema:
+      properties:
+        Thing:
+          properties:
+            id:
+              format: uint64
+              type: integer
+              x-go-name: ID
+            name:
+              type: string
+              x-go-name: Name
+          type: object
+      type: object
 schemes:
 - http
 security:

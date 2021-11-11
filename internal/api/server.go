@@ -3,11 +3,11 @@ package api
 import (
 	"context"
 	"fmt"
+	"github.com/danic95/things-service/goutils/settings"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/gommon/log"
 	logger "github.com/sanservices/apilogger/v2"
 	"go.uber.org/fx"
-	"github.com/danic95/things-service/goutils/settings"
 )
 
 // NewServer creates new echo server object and registers start and end of lifecycle of app

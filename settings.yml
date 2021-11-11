@@ -5,9 +5,12 @@ Service:
   debug: false
   port: 8080
 Database:
-  engine: "sqlite"
+  engine: "mysql"
   host: ""
-  name: "things-service_db"
+  name: "things_bd"
   port: 3306
-  user: ""
+  user: "root"
   password: ""
+Cache:
+  enabled: true
+  addr: "localhost:6379"

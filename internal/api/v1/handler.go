@@ -3,8 +3,8 @@ package v1
 import (
 	validator2 "github.com/sanservices/apicore/validator"
 
-	"github.com/danic95/things-service/internal/things"
 	"github.com/danic95/things-service/goutils/settings"
+	"github.com/danic95/things-service/internal/things"
 )
 
 // Handler handles v1 routes

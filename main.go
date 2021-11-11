@@ -33,6 +33,7 @@ import (
 	v1 "github.com/danic95/things-service/internal/api/v1"
 	"github.com/danic95/things-service/internal/things"
 	"github.com/danic95/things-service/internal/things/repository"
+	"github.com/danic95/things-service/internal/things/repository/cache"
 	"github.com/danic95/things-service/internal/things/service"
 	"github.com/sanservices/apicore/validator"
 	logger "github.com/sanservices/apilogger/v2"
@@ -58,6 +59,8 @@ func main() {
 			repository.New,
 			// Service
 			service.New,
+			// Cache
+			cache.New,
 			// Validator
 			validator.NewValidator,
 			// New server

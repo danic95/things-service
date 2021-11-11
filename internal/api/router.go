@@ -3,11 +3,11 @@ package api
 import (
 	"context"
 	"fmt"
+	"github.com/danic95/things-service/goutils/settings"
 	"github.com/labstack/echo/v4"
 	echoMW "github.com/labstack/echo/v4/middleware"
 	apicoreMW "github.com/sanservices/apicore/middleware"
 	logger "github.com/sanservices/apilogger/v2"
-	"github.com/danic95/things-service/goutils/settings"
 )
 
 // RegisterRoutes iterates over handlers and registers them in given echo server instance

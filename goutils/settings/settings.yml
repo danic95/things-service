@@ -1,0 +1,16 @@
+Service:
+  name: "things-service"
+  path_prefix: ""
+  version: "0.0.1"
+  debug: false
+  port: 8080
+Database:
+  engine: "sqlite"
+  host: ""
+  name: ""
+  port: 3306
+  user: ""
+  password: ""
+Cache:
+  enabled: true
+  addr: ""

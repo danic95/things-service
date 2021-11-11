@@ -4,14 +4,14 @@ package dto
 
 // Generic success
 // swagger:model genericSuccessRS
-type genericSuccessResp struct {
+type GenericSuccessResp struct {
 	// in: body
 	Data interface{}
 }
 
 // Generic error
 // swagger:model genericErrorRS
-type genericErrorResp struct {
+type GenericErrorResp struct {
 	// Error message
 	// in: body
 	Body string `json:"error"`
@@ -19,7 +19,7 @@ type genericErrorResp struct {
 
 // Bad request
 // swagger:model badRequestRS
-type badRequestResp struct {
+type BadRequestResp struct {
 	// Error message
 	// in: body
 	Body string `json:"error"`
@@ -27,7 +27,7 @@ type badRequestResp struct {
 
 // Internal server error
 // swagger:model serverErrorRS
-type serverErrorResp struct {
+type ServerErrorResp struct {
 	// Error message
 	// in: body
 	Body string `json:"body"`
