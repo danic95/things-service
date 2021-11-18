@@ -11,10 +11,11 @@ paths:
       description: Retrieves a thing
       operationId: getThingRQ
       parameters:
-      - in: path
+      - format: uint64
+        in: path
         name: id
         required: true
-        type: string
+        type: integer
         x-go-name: ID
       responses:
         "200":
@@ -34,6 +35,13 @@ paths:
         name: Body
         schema:
           properties:
+            birth_date:
+              format: date-time
+              type: string
+              x-go-name: Birth_date
+            email:
+              type: string
+              x-go-name: Email
             id:
               format: uint64
               type: integer
@@ -41,6 +49,13 @@ paths:
             name:
               type: string
               x-go-name: Name
+            phone:
+              type: string
+              x-go-name: Phone
+            start_day:
+              format: int64
+              type: integer
+              x-go-name: Start_day
           type: object
       responses:
         "200":
@@ -59,16 +74,27 @@ responses:
     description: CreateThingRS represents the response for Swagger documentation
     schema:
       properties:
-        Thing:
-          properties:
-            id:
-              format: uint64
-              type: integer
-              x-go-name: ID
-            name:
-              type: string
-              x-go-name: Name
-          type: object
+        birth_date:
+          format: date-time
+          type: string
+          x-go-name: Birth_date
+        email:
+          type: string
+          x-go-name: Email
+        id:
+          format: uint64
+          type: integer
+          x-go-name: ID
+        name:
+          type: string
+          x-go-name: Name
+        phone:
+          type: string
+          x-go-name: Phone
+        start_day:
+          format: int64
+          type: integer
+          x-go-name: Start_day
       type: object
 schemes:
 - http

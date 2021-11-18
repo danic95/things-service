@@ -4,13 +4,20 @@ Service:
   version: "0.0.1"
   debug: false
   port: 8080
+#Database:
+#  engine: "mysql"
+#  host: ""
+#  name: "things_bd"
+#  port: 3306
+#  user: "root"
+#  password: "root"
 Database:
-  engine: "mysql"
+  engine: "sqlite"
   host: ""
-  name: "things_bd"
+  name: ""
   port: 3306
-  user: "root"
+  user: ""
   password: ""
 Cache:
-  enabled: true
+  enabled: false
   addr: "localhost:6379"
